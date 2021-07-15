@@ -43,6 +43,19 @@
                 </nx-formfield>
             </div>
         </div>
+        <div nxRow>
+            <div nxCol="12">
+                <nx-checkbox class="nx-margin-bottom-s" formControlName="consent">I have read and understood
+                    <a nxPlainButton (click)="openConsentDialog()">the disclaimer and conditions.</a>
+                </nx-checkbox>
+            </div>
+        </div>
+        <div nxRow>
+            <div nxCol="12,6">
+                <button nxButton type="submit" (click)="openSubmitDialog()"
+                    [disabled]="formGroup.invalid">Submit</button>
+            </div>
+        </div>
     </div>
 </form>
 
