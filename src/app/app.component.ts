@@ -8,9 +8,9 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  @ViewChild('consentTemplate') consentTemplateRef: TemplateRef<any>;
-  @ViewChild('submitTemplate') submitTemplateRef: TemplateRef<any>;
-  dialogRef: NxModalRef<any, any>;
+  @ViewChild('consentTemplate') consentTemplateRef: TemplateRef<any> | undefined;
+  @ViewChild('submitTemplate') submitTemplateRef: TemplateRef<any> | undefined;
+  dialogRef: NxModalRef<any, any> | undefined;
   formGroup: FormGroup;
 
   constructor(public dialogService: NxDialogService) {
@@ -23,21 +23,21 @@ export class AppComponent {
   }
 
   openConsentDialog(): void {
-    this.dialogRef = this.dialogService.open(this.consentTemplateRef, {
-      ariaLabel: 'A modal with content',
-      showCloseIcon: true
+    this.dialogRef = this.dialogService.open(this.consentTemplateRef as TemplateRef<any>, {
+      ariaLabel: 'The final modal of the Starter App',
+      showCloseIcon: false
     });
   }
 
   openSubmitDialog(): void {
-    this.dialogRef = this.dialogService.open(this.submitTemplateRef, {
+    this.dialogRef = this.dialogService.open(this.submitTemplateRef as TemplateRef<any>, {
       ariaLabel: 'The final modal of the Starter App',
       showCloseIcon: false
     });
   }
 
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogRef?.close();
   }
 }
 
